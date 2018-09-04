@@ -17,8 +17,8 @@ class SwaggerExport extends Command {
   }
 
   async handle (args, options) {
-    if (!options.silent) this.info('Exporting assets to public folder (public/' + Config('swagger.basePath') + 'docs)')
-    await this.copy(path.join(__dirname, '../templates/docs'), 'public/' + Config('swagger.basePath') + 'docs')
+    if (!options.silent) this.info('Exporting assets to public folder (public/' + Config.get('swagger.basePath') + 'docs)')
+    await this.copy(path.join(__dirname, '../templates/docs'), 'public/' + Config.get('swagger.basePath') + 'docs')
 
     if (!options.silent) this.info('Exporting swagger configuration (config/swagger.js)')
     await this.copy(path.join(__dirname, '../templates/config.js'), 'config/swagger.js')

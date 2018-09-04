@@ -16,8 +16,8 @@ class SwaggerRemoveDocs extends Command {
   }
 
   async handle (args, options) {
-    if (!options.silent) this.info('Removing assets from public folder (public/' + Config('swagger.basePath') + 'docs)')
-    await this.removeDir('public/' + Config('swagger.basePath') + 'docs')
+    if (!options.silent) this.info('Removing assets from public folder (public/' + Config.get('swagger.basePath') + 'docs)')
+    await this.removeDir('public/' + Config.get('swagger.basePath') + 'docs')
 
     if (!options.silent) this.success(`${this.icon('success')} Completed`)
   }
