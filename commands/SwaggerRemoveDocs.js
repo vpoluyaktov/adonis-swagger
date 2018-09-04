@@ -1,6 +1,7 @@
 'use strict'
 
 const { Command } = require('@adonisjs/ace')
+const Config = use('Config')
 
 class SwaggerRemoveDocs extends Command {
   static get signature () {
@@ -15,8 +16,8 @@ class SwaggerRemoveDocs extends Command {
   }
 
   async handle (args, options) {
-    if (!options.silent) this.info('Removing assets from public folder (public/docs)')
-    await this.removeDir('public/docs')
+    if (!options.silent) this.info('Removing assets from public folder (public/' + Config('swagger.basePath') + 'docs)')
+    await this.removeDir('public/' + Config('swagger.basePath') + 'docs')
 
     if (!options.silent) this.success(`${this.icon('success')} Completed`)
   }

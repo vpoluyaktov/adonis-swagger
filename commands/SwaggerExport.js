@@ -2,6 +2,7 @@
 
 const { Command } = require('@adonisjs/ace')
 const path = require('path')
+const Config = use('Config')
 
 class SwaggerExport extends Command {
   static get signature () {
@@ -16,8 +17,8 @@ class SwaggerExport extends Command {
   }
 
   async handle (args, options) {
-    if (!options.silent) this.info('Exporting assets to public folder (public/docs)')
-    await this.copy(path.join(__dirname, '../templates/docs'), 'public/docs')
+    if (!options.silent) this.info('Exporting assets to public folder (public/' + Config('swagger.basePath') + 'docs)')
+    await this.copy(path.join(__dirname, '../templates/docs'), 'public/' + Config('swagger.basePath') + 'docs')
 
     if (!options.silent) this.info('Exporting swagger configuration (config/swagger.js)')
     await this.copy(path.join(__dirname, '../templates/config.js'), 'config/swagger.js')

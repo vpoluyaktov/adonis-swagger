@@ -13,7 +13,7 @@ class SwaggerProvider extends ServiceProvider {
     apis = apis.concat(apisConfig)
 
     if (Config.get('swagger.enable')) {
-      Route.get('/swagger.json', async ({ response }) => {
+      Route.get(Config.get('swagger.basePath') + 'swagger.json', async ({ response }) => {
         const options = {
           swaggerDefinition: {
             info: {
